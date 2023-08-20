@@ -1,19 +1,10 @@
 package com.alexandremot.trainning.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
+@AllArgsConstructor
 public class Anime {
-
+    private Long id;
     private String anime;
-
-    public Anime(String anime) {
-        this.anime = anime;
-    }
-
-
-    public Anime() {
-    }
 }
