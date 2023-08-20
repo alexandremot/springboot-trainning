@@ -4,7 +4,6 @@ import com.alexandremot.trainning.domain.Anime;
 import com.alexandremot.trainning.util.DateUtil;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,8 +14,6 @@ import java.util.List;
 
 
 @RestController
-@AllArgsConstructor
-@RequiredArgsConstructor
 public class AnimeController {
 
     @Autowired
@@ -24,10 +21,14 @@ public class AnimeController {
 
     Logger logger = LoggerFactory.getLogger(AnimeController.class);
 
+    public AnimeController(DateUtil dateUtil) {
+        this.dateUtil = dateUtil;
+    }
+
     @GetMapping(path = "lista_animes")
-    public List<Anime> list(){
+    public List<Anime> listaAnimes(){
         logger.info(dateUtil.formatLocalDatetimeToDatabaseStyle(LocalDateTime.now()));
-        return List.of(new Anime("Saint Seya"), new Anime("Shurato"));
+        return List.of(new Anime("Saint Seya"), new Anime("Yu Yu Hakusho"));
     }
 
 }
